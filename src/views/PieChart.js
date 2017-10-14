@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {
+  Alert,
   View,
   StyleSheet,
   TouchableOpacity,
@@ -24,7 +25,7 @@ export default class PieChart extends Component {
   getPath_d(item, i) {
     var cx = (window.width - 10) / 2;
     var cy = (window.height - 10) / 2;
-    var r = 10 * i + 100;
+    var r = window.width * item.percent;
     var deg = 360 * item.percent + this.startAngle;
 
     var x0 = cx + r * Math.cos(this.startAngle * Math.PI / 180);
@@ -69,7 +70,14 @@ export default class PieChart extends Component {
         <Svg height={window.height - 10} width={window.width - 10}>
           {this.state.data.map((item, i) => {
             return (
-              <Path key={i} d={this.getPath_d(item, i)} fill={item.color} />
+              <Path
+                onPress={() => {
+                  Alert.alert("Message", item.percent.toString());
+                }}
+                key={i}
+                d={this.getPath_d(item, i)}
+                fill={item.color}
+              />
             );
           })}
         </Svg>

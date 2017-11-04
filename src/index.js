@@ -1,6 +1,6 @@
 import React from "react";
 import { StackNavigator } from "react-navigation";
-import { Home, ReduxEX, PieChart } from "./views";
+import { Home, ReduxEX, PieChart, Speech } from "./views";
 
 const App = StackNavigator(
   {
@@ -20,6 +20,12 @@ const App = StackNavigator(
       screen: PieChart,
       navigationOptions: {
         title: "Pie Chart"
+      }
+    },
+    Speech: {
+      screen: Speech,
+      navigationOptions: {
+        title: "Speech Text"
       }
     }
   },
